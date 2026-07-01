@@ -1,0 +1,15 @@
+---
+title: "API - College Scorecard"
+author: "Jack Larson"
+date: "2026-07-01"
+output: html_document
+---
+
+```{r}
+library("httr")
+library("jsonlite")
+```
+
+```{r}
+
+```
