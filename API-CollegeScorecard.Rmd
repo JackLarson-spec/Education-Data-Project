@@ -45,6 +45,7 @@ iowaSchools <- scoreCardData$results
 View(iowaSchools)
 ```
 
+# Converting raw data to CSV
 ```{r}
 write_csv(iowaSchools,"raw_iowa_schools_data.csv")
 ```
