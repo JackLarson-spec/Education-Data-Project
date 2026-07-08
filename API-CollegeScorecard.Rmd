@@ -6,8 +6,9 @@ output: html_document
 ---
 
 ```{r}
-library("httr")
-library("jsonlite")
+library(httr)
+library(jsonlite)
+library(readr)
 
 url <- "https://api.data.gov/ed/collegescorecard/v1/schools"
 
@@ -20,7 +21,8 @@ scoreCard <- GET(
   url,
   query = list(
     api_key = api_key,
-    school.state = "IA"
+    school.state = "IA",
+    per_page = 75
   )
 )
 
@@ -35,7 +37,7 @@ scoreCardContent <- httr::content(scoreCard, as = "text")
 str(scoreCardContent)
 
 # Convert JSON to R object
-scoreCardData <- jsonlite::fromJSON(scoreCardContent)
+scoreCardData <- jsonlite::fromJSON(scoreCardContent, flatten = TRUE)
 
 # Store results in a data frame
 iowaSchools <- scoreCardData$results
@@ -44,5 +46,5 @@ View(iowaSchools)
 ```
 
 ```{r}
-
+write_csv(iowaSchools,"raw_iowa_schools_data.csv")
 ```
