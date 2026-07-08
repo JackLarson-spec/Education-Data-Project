@@ -1,0 +1,14 @@
+---
+title: "Cleaning - College Scorecard"
+author: "Jack Larson"
+date: "2026-07-08"
+output: html_document
+---
+
+```{r}
+library(tidyr)
+```
+
+```{r}
+
+```
