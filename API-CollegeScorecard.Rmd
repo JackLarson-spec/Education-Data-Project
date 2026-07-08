@@ -8,8 +8,37 @@ output: html_document
 ```{r}
 library("httr")
 library("jsonlite")
+
+url <- "https://api.data.gov/ed/collegescorecard/v1/schools"
+
+api_key <- Sys.getenv("COLLEGE_SCORECARD_KEY")
 ```
 
+# Get the API from 
 ```{r}
+scoreCard <- GET(
+  url,
+  query = list(
+    api_key = api_key,
+    school.state = "IA"
+  )
+)
 
+str(scoreCard)
+```
+
+# Store the results
+```{r}
+# Convert to JSON string
+scoreCardContent <- httr::content(scoreCard, as = "text")
+
+str(scoreCardContent)
+
+# Convert JSON to R object
+scoreCardData <- jsonlite::fromJSON(scoreCardContent)
+
+# Store results
+iowaSchools <- scoreCardData$results
+
+View(iowaSchools)
 ```
