@@ -37,8 +37,12 @@ str(scoreCardContent)
 # Convert JSON to R object
 scoreCardData <- jsonlite::fromJSON(scoreCardContent)
 
-# Store results
+# Store results in a data frame
 iowaSchools <- scoreCardData$results
 
 View(iowaSchools)
+```
+
+```{r}
+
 ```
