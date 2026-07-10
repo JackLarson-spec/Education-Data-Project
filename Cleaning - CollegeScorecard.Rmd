@@ -6,9 +6,18 @@ output: html_document
 ---
 
 ```{r}
-library(tidyr)
+library(skimr)
+library(janitor)
+library(corrplot)
+library(tidyverse)
+library(knitr)
+
+rawData <- read.csv("raw_iowa_schools_data.csv")
 ```
 
+# Removing columns with no data
 ```{r}
-
+removed_columns <- rawData %>%
+  summerize_all(is.na(.) | . == 0) %>%
+  
 ```
